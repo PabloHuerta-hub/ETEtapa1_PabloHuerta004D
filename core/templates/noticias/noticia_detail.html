@@ -1,0 +1,31 @@
+{% extends "Base.html" %}
+{% block content %}
+{% load static %}
+<head>
+
+</head>
+<header class="masthead">
+    <div class="container d-flex flex-column"> 
+
+        <h1 class="page-section-heading text-uppercase text-secondary mb-0"> {{noti.titullo}} </h1>
+    <div class="row">
+  
+        <div class="col-md-8">
+            <div class="embed-container">
+                <iframe width="560" height="315" src={{noti.url}} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          </div>
+        <div class="col-md-4">
+          <br>
+          <h3 class="descripcion text-secondary">Descripción</h3>
+          <br>
+          <p class="texto">{{noti.info}}</p>
+            <br>
+          <br>
+        
+        </div>
+    <div class="embed-container">
+        <iframe width="700" height="450" src={{noti.url}} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      </div>
+    </div>
+      </header>
+{% endblock %}

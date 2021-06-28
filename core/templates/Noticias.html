@@ -1,0 +1,76 @@
+{% extends "Base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+    <link rel="stylesheet" href="{% static 'css/Index.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="headers">Deportes: </h2> <br>
+          <div class="row">
+          {% for noti in noticiasd %}
+          <div class="col-md-4">
+              <div class="card mb-2">
+                  <img class="card-img-top foto" src="{{noti.imagen.url}}">
+                  <div class="card-body">
+                      <h5 class="card-title text-uppercase letrasnoticia">{{noti.titulo}}</h5>
+                      <a href="{% url 'movie-detail' noti.pk %}"
+                      class="btn btn-primary" style="float: right;">
+                       Ver más
+                   </a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <br>
+      <div class="container">
+        <h2 class="headers">Politica: </h2> <br>
+          <div class="row">
+          {% for noti in noticiasp %}
+          <div class="col-md-4">
+              <div class="card mb-2">
+                  <img class="card-img-top foto" src="{{noti.imagen.url}}">
+                  <div class="card-body">
+                      <h5 class="card-title text-uppercase letrasnoticia">{{noti.titulo}}</h5>
+                      <a href="{% url 'movie-detail' noti.pk %}"
+                      class="btn btn-primary" style="float: right;">
+                       Ver más
+                   </a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <br>
+      <div class="container">
+        <h2 class="headers">Internacional: </h2> <br>
+          <div class="row">
+          {% for noti in noticiasi %}
+          <div class="col-md-4">
+              <div class="card mb-2">
+                  <img class="card-img-top foto" src="{{noti.imagen.url}}">
+                  <div class="card-body">
+                      <h5 class="card-title text-uppercase letrasnoticia">{{noti.titulo}}</h5>
+                      <a href="{% url 'movie-detail' noti.pk %}"
+                      class="btn btn-primary" style="float: right;">
+                       Ver más
+                   </a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+</body>
+{% endblock %}
+</html>

@@ -59,7 +59,7 @@
                 <img class="card-img-top foto" src="{{not.imagen.url}}">
                 <div class="card-body">
                     <h5 class="card-title text-uppercase letrasnoticia">{{not.titulo}}</h5>
-                    <a href="{{not.fuente}}" class="btn btn-primary" style="float: right;">
+                    <a href="{{not.fuente}}" class="btn botonesmodal letrasmodal" style="float: right;">
                     Ver más</a>
                 </div>
             </div>
@@ -78,9 +78,9 @@
               <img class="card-img-top foto" src="{{notiD.imagen.url}}">
               <div class="card-body">
                   <h5 class="card-title text-uppercase letrasnoticia">{{notiD.titulo}}</h5>
-                  <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#miModal">
+                  <button type="button" class="btn botonesmodal letrasmodal" style="float: right;" data-toggle="modal" data-target="#{{notiD.titulo}}">
                   Ver más</button>
-                  <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="{{notiD.titulo}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content modalcolor">
                         
@@ -112,10 +112,11 @@
           <div class="card mb-2">
               <img class="card-img-top foto" src="{{notiP.imagen.url}}">
               <div class="card-body">
+                
                   <h5 class="card-title text-uppercase letrasnoticia">{{notiP.titulo}}</h5>
-                  <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#miModal1">
+                  <button type="button" class="btn botonesmodal letrasmodal" style="float: right;" data-toggle="modal" data-target="#{{notiP.titulo}}">
                   Ver más</button>
-                  <div class="modal fade" id="miModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="{{notiP.titulo}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content modalcolor">     
                         <div class="modal-header headersModal">

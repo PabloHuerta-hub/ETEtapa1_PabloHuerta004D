@@ -21,17 +21,17 @@
           <div class="collapse navbar-collapse " id="navbarResponsive" >
             <ul class="navbar-nav  ml-auto letrasnavbar">
               <li class="nav-item active" > 
-                <a class="nav-link letrasnavbar" href="#">Inicio
+                <a class="nav-link letrasnavbar" href="{% url 'Index' %}">Inicio
                 </a>
               </li>
               <li class="nav-item"> 
-                <a class="nav-link letrasnavbar" href="#">Envianos tu noticia</a>
+                <a class="nav-link letrasnavbar" href="{% url 'crearNoticia' %}">Envianos tu noticia</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link letrasnavbar" href="#">Contactanos</a>
               </li>
               <li>
-                <a class="nav-link letrasnavbar" href="#">Noticias</a>
+                <a class="nav-link letrasnavbar" href="{% url 'Noticias' %}">Noticias</a>
               </li>
       </nav>
       

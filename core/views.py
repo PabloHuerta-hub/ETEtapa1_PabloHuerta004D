@@ -7,10 +7,25 @@ def index(request):
     Noticias=NoticiaOtrasFuentes.objects.all()
     Deportes=NoticiaDeportes.objects.all()
     return render(request,'Index.html', context={'noticias':Noticias , 'deportes':Deportes , 'politica':Politica})
+
 def noticias(request):
     Noticias=NoticiasPagina.objects.all()
     return render(request,'Noticias.html',context={'noticias':Noticias},)
 
+def colaborador(request):
+    colaborador=Colaborador.objects.all()
+    return render(request,'Colaboradores.html',context={'colaborador':colaborador})
+
+def crearNoticias(request):
+    if request.method == "POST":
+        formulario=noticiaForm(request.POST or None, request.FILES or None)
+        if formulario.is_valid():
+            post=formulario.save(commit=False)
+            post.save()
+            return redirect('noticias')
+    else:
+        formulario=noticiaForm()
+    return render(request, 'noticias/formulario_noticias.html',{'noticia':formulario})
 def crearColaborador(request):
     if request.method == "POST":
         formulario = Colaboradorform(request.POST or None,request.FILES or None)
@@ -26,6 +41,7 @@ def form_eliminar(request,id):
     noticias = NoticiasPagina.objects.get(idnoticia=id)
     noticias.delete()
     return redirect('noticias')
+
 def form_modificar(request, id):
     post = get_object_or_404(NoticiasPagina, idnoticia=id)
     if request.method == "POST":
@@ -37,8 +53,7 @@ def form_modificar(request, id):
     else:
         formulario = noticiaForm(instance=post)
     return render(request, 'noticias/form_modificar.html', {'form': formulario})
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.views import generic
-class DetalleNoticiaView(generic.DetailView):
-    model = NoticiasPagina
+    
+def Noticia_detail(request, id):
+    Noticia = NoticiasPagina.objects.get(idnoticia=id)
+    return render(request, 'noticias/noticia_detail.html',{'noti':Noticia})

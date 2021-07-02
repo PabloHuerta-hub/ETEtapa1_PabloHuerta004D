@@ -2,30 +2,33 @@
 {% block content %}
 {% load static %}
 <head>
-
+  
+  <link rel="stylesheet" href="{% static 'css/Index.css' %}">
 </head>
-<header class="masthead">
-    <div class="container d-flex flex-column"> 
+<body>
+  <br><br><br><br>
 
-        <h1 class="page-section-heading text-uppercase text-secondary mb-0"> {{noti.titullo}} </h1>
+<header class="masthead">
+    <div class="container d-flex flex-column "> 
+
+        <h1 class="page-section-heading text-uppercase letrasnoticia"> {{noti.titulo}}: </h1>
     <div class="row">
   
         <div class="col-md-8">
-            <div class="embed-container">
-                <iframe width="560" height="315" src={{noti.url}} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="embed-container">
+            <iframe width="720" height="519" src="{{noti.urls}}" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
           </div>
-        <div class="col-md-4">
+        <div class="col-md-4"  >
           <br>
-          <h3 class="descripcion text-secondary">Descripción</h3>
+          <h3 class="descripcion  letrasnoticia">Descripción</h3>
           <br>
-          <p class="texto">{{noti.info}}</p>
+          <p class="texto letrasnoticia">{{noti.info}}</p>
             <br>
-          <br>
-        
+
+         <br>    
         </div>
-    <div class="embed-container">
-        <iframe width="700" height="450" src={{noti.url}} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      </div>
     </div>
       </header>
+    </body>
+    <br><br><br><br><br><br><br>
 {% endblock %}

@@ -41,8 +41,6 @@ class NoticiasPagina(models.Model):
         ordering=['titulo']
     def __str__(self):
         return self.titulo
-    def get_absolute_url(self):
-        return reverse('noticia-detail', args=[str(self.idnoticia)])
 
 class Colaborador(models.Model):
     rut=models.CharField(max_length=100, verbose_name="rut", primary_key=True)

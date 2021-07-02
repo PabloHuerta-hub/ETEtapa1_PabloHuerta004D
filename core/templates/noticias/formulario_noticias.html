@@ -1,0 +1,51 @@
+{% extends "Base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear noticia</title>
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <script src="{% static 'js/validaciones.js' %}"> </script>
+</head>
+<body>
+    <br><br><br>
+    <div class="container" align="center">
+        <div class="jumbotron formulario" >
+            <h1 class="headers">Postula como colaborador:</h1>
+                <form method="POST" action="#" id="formulario" enctype=multipart/form-data>
+                    {%csrf_token%}
+                    <div class="form-group letrasforms">
+                        {{noticia.titulo.label}}
+                        {{noticia.titulo}}
+                    </div>
+                    <div class="form-group letrasforms">
+                        {{noticia.categoria.label}}
+                        {{noticia.categoria}}
+                    </div>
+                    <div class="form-group letrasforms">
+                        {{noticia.imagen.label}}
+                        {{noticia.imagen}}
+                    </div>
+                    <div class="form-group letrasforms">
+                        {{noticia.urls.label}}
+                        {{noticia.urls}}
+                    </div>
+                    <div class="form-group letrasforms">
+                        {{noticia.info.label}}
+                        {{noticia.info}}
+                    </div>
+                <div class="form-group">
+                    <input type="submit" class="btn boton" id="enviar" value="Enviar">
+                   <input type="reset" class="btn boton" id="limpiar" value="Limpiar">
+               </div>
+                </form>
+            </div> 
+  </div>
+  <br><br>
+</body>
+{% endblock %}
+</html>

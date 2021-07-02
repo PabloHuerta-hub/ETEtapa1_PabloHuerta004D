@@ -1,3 +1,0 @@
-CaosNews
-MariaDatabase
-    categoria=models.ForeignKey(CategoriaNoticia,on_delete=models.CASCADE)

@@ -31,7 +31,8 @@ class NoticiaPoliticas(models.Model):
         return self.titulo
 
 class NoticiasPagina(models.Model):
-    titulo=models.CharField(primary_key=True,max_length=80, verbose_name="titulo")
+    idnoticia=models.UUIDField(primary_key=True,verbose_name="id",default=uuid.uuid4)
+    titulo=models.CharField(max_length=80, verbose_name="titulo")
     categoria=models.ForeignKey(CategoriaNoticia,on_delete=models.CASCADE,related_name="TipoNoticias")
     imagen = models.ImageField(verbose_name="imagen",upload_to="media")
     urls=models.URLField(verbose_name="url",max_length=200)
@@ -40,7 +41,17 @@ class NoticiasPagina(models.Model):
         ordering=['titulo']
     def __str__(self):
         return self.titulo
-
     def get_absolute_url(self):
-        """Returns the url to access a detail record for this book."""
-        return reverse('movie-detail', args=[str(self.titulo)])
+        return reverse('noticia-detail', args=[str(self.idnoticia)])
+
+class Colaborador(models.Model):
+    rut=models.CharField(max_length=100, verbose_name="rut", primary_key=True)
+    foto=models.ImageField(verbose_name="imagen",upload_to="media")
+    nombre= models.CharField(max_length=200, verbose_name="nombre")
+    telefono=models.IntegerField(verbose_name="telefono")
+    direccion=models.CharField(verbose_name="direccion", max_length=100)
+    email=models.CharField(verbose_name="email", max_length=200)
+    pais=models.CharField(verbose_name="pais", max_length=80)
+    contra=models.CharField(verbose_name="pass", max_length=200,blank=True,null=True)
+    def __str__(self):
+        return self.nombre

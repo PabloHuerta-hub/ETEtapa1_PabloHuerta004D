@@ -30,8 +30,14 @@ def crearColaborador(request):
     if request.method == "POST":
         formulario = Colaboradorform(request.POST or None,request.FILES or None)
         if formulario.is_valid():
+            contrasena = (formulario.cleaned_data['rut'])[0:2] + ((formulario.cleaned_data['nombre'])[0:2]).upper() + ((formulario.cleaned_data['pais'])[-2:]).lower() + str(formulario.cleaned_data['telefono'])[-2:]
+            rutsolicitud = formulario.cleaned_data['rut']
             post = formulario.save(commit=False)
             post.save()
+            nuevacontra = Colaborador.objects.get(rut=rutsolicitud)
+            nuevacontra.contra = contrasena
+            nuevacontra.save()
+
             return redirect('Index')
     else:
         formulario = Colaboradorform()

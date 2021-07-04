@@ -34,9 +34,9 @@ def crearColaborador(request):
             rutsolicitud = formulario.cleaned_data['rut']
             post = formulario.save(commit=False)
             post.save()
-            nuevacontra = Colaborador.objects.get(rut=rutsolicitud)
-            nuevacontra.contra = contrasena
-            nuevacontra.save()
+            creacontrasena = Colaborador.objects.get(rut=rutsolicitud)
+            creacontrasena.contra = contrasena
+            creacontrasena.save()
 
             return redirect('Index')
     else:

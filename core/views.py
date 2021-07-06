@@ -37,7 +37,6 @@ def crearColaborador(request):
             creacontrasena = Colaborador.objects.get(rut=rutsolicitud)
             creacontrasena.contra = contrasena
             creacontrasena.save()
-
             return redirect('Index')
     else:
         formulario = Colaboradorform()

@@ -58,7 +58,29 @@ def form_modificar(request, id):
     else:
         formulario = noticiaForm(instance=post)
     return render(request, 'noticias/form_modificar.html', {'form': formulario})
-    
+
+def form_eliminarColab(request,id):
+    colaborador = Colaborador.objects.get(rut=id)
+    colaborador.delete()
+    return redirect('colaboradores')
+
+def form_modificarColab(request, id):
+    post = get_object_or_404(Colaborador, rut=id)
+    if request.method == "POST":
+        formulario = Colaboradorform(request.POST, request.FILES, instance=post)
+        if formulario.is_valid():    
+            post = formulario.save(commit=False)
+            post.save()
+            contrasena = (formulario.cleaned_data['rut'])[0:2] + ((formulario.cleaned_data['nombre'])[0:2]).upper() + ((formulario.cleaned_data['pais'])[-2:]).lower() + str(formulario.cleaned_data['telefono'])[-2:]
+            rutsolicitud = formulario.cleaned_data['rut']
+            creacontrasena = Colaborador.objects.get(rut=rutsolicitud)
+            creacontrasena.contra = contrasena
+            creacontrasena.save()
+            return redirect('colaboradores')
+    else:
+        formulario = Colaboradorform(instance=post)
+    return render(request, 'noticias/form_modificarColab.html', {'colaboradores': formulario})
+
 def Noticia_detail(request, id):
     Noticia = NoticiasPagina.objects.get(idnoticia=id)
     return render(request, 'noticias/noticia_detail.html',{'noti':Noticia})

@@ -21,13 +21,24 @@
                   <img class="card-img-top foto" src="{{noti.foto.url}}">
                   <div class="card-body">
                       <h5 class="card-title text-uppercase letrasnoticia">{{noti.nombre}}</h5>
-                  </div>
+                      <a href="{% url 'eliminarColab' noti.rut%}"
+                  class="btn botonesmodal letrasmodal" style="float: right;margin-right:  10px;">
+                  Eliminar
+               </a>
+               <a href="{% url 'modificarColab' noti.rut%}"
+               class="btn botonesmodal letrasmodal" style="float: right; margin-right:  10px;">
+               Modificar
+            </a>
+                    </div>
+              
               </div>
+           
           </div>
+
           {% endfor %}
         </div>
       </div>
-      <br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br>
 </body>
 {% endblock %}
 </html>

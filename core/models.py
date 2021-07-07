@@ -43,7 +43,8 @@ class NoticiasPagina(models.Model):
         return self.titulo
 
 class Colaborador(models.Model):
-    rut=models.CharField(max_length=100, verbose_name="rut", primary_key=True)
+    idcolaborador=models.UUIDField(primary_key=True,verbose_name="colaborador",default=uuid.uuid4)
+    rut=models.CharField(max_length=100, verbose_name="rut")
     foto=models.ImageField(verbose_name="imagen",upload_to="media")
     nombre= models.CharField(max_length=200, verbose_name="nombre")
     telefono=models.IntegerField(verbose_name="telefono")

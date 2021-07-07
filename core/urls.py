@@ -1,5 +1,5 @@
 from django.urls import path,include,re_path
-from .views import index,noticias,crearColaborador,form_eliminar,form_modificar,Noticia_detail,colaborador,crearNoticias
+from .views import index,noticias,crearColaborador,form_eliminar,form_modificar,Noticia_detail,colaborador,crearNoticias,form_eliminarColab,form_modificarColab
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns =[
@@ -8,6 +8,8 @@ urlpatterns =[
     path('crear_colaborador', crearColaborador, name="colaborador"),
     path('form_eliminar/<id>',form_eliminar, name='eliminar'),
     path('form_modificar/<id>', form_modificar, name='modificar'),
+    path('form_eliminarColab/<id>',form_eliminarColab, name="eliminarColab"),
+    path('form_modificarColab/<id>',form_modificarColab, name="modificarColab"),
     path('noticia/<id>',Noticia_detail, name='noticiaDetail'),
     path('colaboradores',colaborador,name='colaboradores'),
     path('form_noticia',crearNoticias,name='noticia')
